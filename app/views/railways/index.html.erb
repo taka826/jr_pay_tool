@@ -2,3 +2,21 @@
   <h1 class="jr-1">JR pay off study toolとは</h1>
   <p class="jr-2">分倍河原駅でJR切符の精算方法がわからない時の為のお役立ちツールです！</p>
 </div>
+<div class="contents row">
+  <% @railway.each do |railway| %>
+    <div class="content_post" style="background-image: url(<%= railway.image %>);">
+      <div class="more">
+        <span><%= image_tag 'arrow_top.png' %></span>
+        <ul class="more_list">
+          <li>
+            <%= link_to '削除', railway_path(railway.id), method: :delete %>
+          </li>
+        </ul>
+      </div>
+      <p><%= railway.text %></p>
+      <span class="name">
+        <%= railway.name %>
+      </span>
+    </div>
+  <% end %>
+</div>
