@@ -3,7 +3,7 @@ class RailwaysController < ApplicationController
   before_action :set_railway, only: [:edit, :show]
 
   def index
-    @railway = Railway.all
+    @railway = Railway.includes(:user)
   end
 
   def new
@@ -33,7 +33,7 @@ class RailwaysController < ApplicationController
   private
 
   def railway_params
-    params.require(:railway).permit(:name, :image, :text)
+    params.require(:railway).permit(:image, :text).merge(user_id: current_user.id)
   end
 
   def set_railway

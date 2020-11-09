@@ -21,7 +21,9 @@
       </div>
       <p><%= railway.text %></p>
       <span class="name">
-        <%= railway.name %>
+        <a href="">
+          <span>投稿者</span><%= railway.user.nickname %>
+        </a>
       </span>
     </div>
   <% end %>
