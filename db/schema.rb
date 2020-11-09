@@ -13,9 +13,9 @@
 ActiveRecord::Schema.define(version: 2020_11_07_092020) do
 
   create_table "railways", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "junction_id", null: false
-    t.integer "price", null: false
-    t.integer "terminal_id", null: false
+    t.string "name"
+    t.string "text"
+    t.text "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
