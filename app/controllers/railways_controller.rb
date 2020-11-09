@@ -18,6 +18,15 @@ class RailwaysController < ApplicationController
     railway.destroy
   end
 
+  def edit
+    @railway = Railway.find(params[:id])
+  end
+
+  def update
+    railway = Railway.find(params[:id])
+    railway.update(railway_params)
+  end
+  
   private
 
   def railway_params
