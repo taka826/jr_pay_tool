@@ -1,5 +1,6 @@
 class RailwaysController < ApplicationController
   before_action :move_to_index, except: :index
+  before_action :set_railway, only: [:edit, :show]
 
   def index
     @railway = Railway.all
@@ -19,7 +20,6 @@ class RailwaysController < ApplicationController
   end
 
   def edit
-    @railway = Railway.find(params[:id])
   end
 
   def update
@@ -27,10 +27,17 @@ class RailwaysController < ApplicationController
     railway.update(railway_params)
   end
   
+  def show
+  end
+
   private
 
   def railway_params
     params.require(:railway).permit(:name, :image, :text)
+  end
+
+  def set_railway
+    @railway = Railway.find(params[:id])
   end
 
   def move_to_index
