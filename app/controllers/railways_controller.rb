@@ -3,7 +3,7 @@ class RailwaysController < ApplicationController
   before_action :set_railway, only: [:edit, :show]
 
   def index
-    @railway = Railway.includes(:user)
+    @railway = Railway.includes(:user).order("created_at DESC")
   end
 
   def new
