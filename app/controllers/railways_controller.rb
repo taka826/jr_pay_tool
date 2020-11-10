@@ -28,6 +28,8 @@ class RailwaysController < ApplicationController
   end
   
   def show
+    @comment = Comment.new
+    @comments = @railway.comments.includes(:user)
   end
 
   private

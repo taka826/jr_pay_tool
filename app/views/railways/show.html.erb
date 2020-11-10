@@ -1,7 +1,8 @@
 <div class="contents row">
-  <div class="content_post" style="background-image: url(<%= @railway.image %>);">
+  <div class="content_post">
+    <%= image_tag @railway.image.variant(resize: '600x600') %>
     <div class="more">
-      <span><%= image_tag @railway.image, class: 'railway-image' if @railway.image.attached? %></span>
+      <span><%= image_tag 'arrow_top.png' %></span>
       <ul class="more_list">
       <% if user_signed_in? && current_user.id == @railway.user_id %>
         <li>
@@ -15,5 +16,26 @@
     </div>
     <p><%= @railway.text %></p>
     </span>
+  </div>
+  <div class="container">
+    <% if user_signed_in? %>
+      <%= form_with(model: [@railway, @comment], local: true) do |form| %>
+        <%= form.text_area :text, placeholder: "解説を入力する", rows: "2" %>
+        <%= form.submit "SEND" %>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ 解説の投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %>
+    <div class="comments">
+      <h4>＜解説＞</h4>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <p>
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+            <%= comment.text %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
