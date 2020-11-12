@@ -14,18 +14,9 @@
       <% end %>
       </ul>
     </div>
-    <p><%= @railway.text %></p>
     </span>
   </div>
   <div class="container">
-    <% if user_signed_in? %>
-      <%= form_with(model: [@railway, @comment], local: true) do |form| %>
-        <%= form.text_area :text, placeholder: "解説を入力する", rows: "2" %>
-        <%= form.submit "SEND" %>
-      <% end %>
-    <% else %>
-      <strong><p>※※※ 解説の投稿には新規登録/ログインが必要です ※※※</p></strong>
-    <% end %>
     <div class="comments">
       <h4>＜解説＞</h4>
       <% if @comments %>
@@ -37,5 +28,13 @@
         <% end %>
       <% end %>
     </div>
+    <% if user_signed_in? %>
+      <%= form_with(model: [@railway, @comment], local: true) do |form| %>
+        <%= form.text_area :text, placeholder: "解説を入力する", rows: "2" %>
+        <%= form.submit "SEND" %>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ 解説の投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %>
   </div>
 </div>

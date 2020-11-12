@@ -1,5 +1,5 @@
 class RailwaysController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, except: [:index, :show, :search]
   before_action :set_railway, only: [:edit, :show]
 
   def index
@@ -30,6 +30,10 @@ class RailwaysController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @railway.comments.includes(:user)
+  end
+
+  def search
+    @railways = Railway.search(params[:keyword])
   end
 
   private
