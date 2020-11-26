@@ -145,3 +145,4 @@ belongs_to :user
         JavaScript
         AWS S3
         Git Hub
+        Bootstrap
